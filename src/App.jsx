@@ -2,11 +2,12 @@ import AnimatedCityBg from "./components/AnimatedCityBg";
 import Logo from "./assets/thicklogo.png";
 import Sidebars from "./components/Sidebars";
 import GlassTimer from "./components/GlassTimer";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div className="relative w-full h-screen">
-      <GlassTimer targetDate="2025-11-31T23:59:59" />
+      <Navbar />
 
       <AnimatedCityBg />
       <Sidebars />

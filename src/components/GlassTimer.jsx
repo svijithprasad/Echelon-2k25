@@ -41,10 +41,11 @@ const GlassTimer = ({ targetDate }) => {
 
   return (
     <div
-      className="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center justify-center 
-      gap-2 md:gap-4 p-2 md:p-4 rounded-2xl md:rounded-3xl  
+      className="flex items-center justify-center 
+      gap-1.5 md:gap-3 px-2 md:px-3 py-1.5 md:py-2 
+      rounded-xl md:rounded-2xl 
       border border-[rgba(255,255,255,0.15)]
-      shadow-[0_0_25px_rgba(255,255,255,0.05),inset_0_0_15px_rgba(255,255,255,0.05)] 
+      shadow-[0_0_15px_rgba(255,255,255,0.05),inset_0_0_10px_rgba(255,255,255,0.05)] 
       text-white bg-[rgba(15,15,25,0.5)] backdrop-blur-2xl"
     >
       {timeData.map((item, i) => (
@@ -54,14 +55,14 @@ const GlassTimer = ({ targetDate }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, delay: i * 0.1 }}
           className="relative flex flex-col items-center justify-center 
-          w-[45px] h-[55px] md:w-[70px] md:h-[80px] 
-          rounded-lg md:rounded-xl 
+          w-[35px] h-[45px] md:w-[50px] md:h-[60px]
+          rounded-md md:rounded-lg 
           border border-[rgba(255,255,255,0.15)]
           bg-[rgba(15,15,25,0.7)] backdrop-blur-2xl 
-          shadow-[inset_0_0_10px_rgba(255,255,255,0.05)] text-white"
+          shadow-[inset_0_0_6px_rgba(255,255,255,0.05)]"
           style={{
-            boxShadow: `inset 0 0 10px rgba(255,255,255,0.05),
-                        0 0 10px ${item.glow}`,
+            boxShadow: `inset 0 0 6px rgba(255,255,255,0.05),
+                        0 0 8px ${item.glow}`,
           }}
         >
           <motion.span
@@ -69,12 +70,12 @@ const GlassTimer = ({ targetDate }) => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="text-sm md:text-2xl font-bold tracking-wider"
+            className="text-[10px] md:text-lg font-bold tracking-wide leading-none"
             style={{ color: item.glow }}
           >
             {item.value}
           </motion.span>
-          <span className="text-[8px] md:text-[10px] mt-1 tracking-wider text-gray-300 font-semibold">
+          <span className="text-[6px] md:text-[8px] mt-0.5 tracking-widest text-gray-300 font-semibold uppercase">
             {item.label}
           </span>
         </motion.div>
