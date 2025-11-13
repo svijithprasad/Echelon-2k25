@@ -30,13 +30,12 @@ const Navbar = () => {
           src={"/sditlogo.png"}
           alt="Logo"
           className="
-      w-8 h-8
-      sm:w-10 sm:h-10
-      md:w-12 md:h-12
-      lg:w-14 lg:h-14
-      object-contain
-      drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]
-      transition-all duration-300
+          w-15 h-14
+          md:w-12 md:h-12
+          lg:w-14 lg:h-14
+          object-contain
+          drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]
+          transition-all duration-300
     "
         />
         <h1 className="text-white font-semibold text-lg sm:text-xl md:text-2xl tracking-wide">

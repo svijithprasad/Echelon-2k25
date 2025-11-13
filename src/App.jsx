@@ -125,24 +125,38 @@ function App() {
     );
   };
 
-  useEffect(() => {
-    const imgs = [
-      "/scooter.png",
-      "/thicklogo.png",
-      "/sditlogo.png",
-      "/bg.mp4",
-      
-      ...events.map((e) => e.img),
-      ...events.map((e) => e.bg),
-    ];
-
-    preloadImages(imgs).then(() => {
-      console.log("All images loaded");
+  const preloadVideo = (src) => {
+    return new Promise((resolve) => {
+      const video = document.createElement("video");
+      video.src = src;
+      video.preload = "auto";
+      video.oncanplaythrough = resolve;
+      video.onerror = resolve;
     });
+  };
+
+  useEffect(() => {
+    const preloadAll = async () => {
+      const imageList = [
+        "/scooter.png",
+        "/thicklogo.png",
+        "/sditlogo.png",
+        ...events.map((e) => e.img),
+        ...events.map((e) => e.bg),
+      ];
+
+      await preloadImages(imageList);
+
+      await preloadVideo("/bg.mp4");
+
+      setIsReady(true);
+    };
+
+    preloadAll();
   }, []);
 
   if (!isReady) {
-    return <AppLoader onFinish={() => setIsReady(true)} />;
+    return <AppLoader />;
   }
 
   return (
