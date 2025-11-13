@@ -1,5 +1,10 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence, useAnimation } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useAnimation,
+  useInView,
+} from "framer-motion";
 import GradientText from "@/components/GradientText";
 
 // EVENTS DATA
@@ -94,18 +99,19 @@ const events = [
 ];
 
 // ANIMATION VARIANTS
-const leftColumn = {
-  hidden: { opacity: 0, x: -120 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7 } },
+const leftVariants = {
+  hidden: { opacity: 0, x: -150 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
 };
-const centerColumn = {
-  hidden: { opacity: 0, y: 120 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+const centerVariants = {
+  hidden: { opacity: 0, y: 150 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
-const rightColumn = {
-  hidden: { opacity: 0, x: 120 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7 } },
+const rightVariants = {
+  hidden: { opacity: 0, x: 150 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
 };
+
 const scooterVariants = {
   hidden: { opacity: 0, x: "-200%" },
   visible: {
@@ -119,35 +125,47 @@ const scooterVariants = {
 export default function EventSection() {
   const [selected, setSelected] = useState(null);
 
-  // Animation controls for mobile fix
-  const leftControls = useAnimation();
-  const centerControls = useAnimation();
-  const rightControls = useAnimation();
+  const sectionRef = useRef(null);
+  const inView = useInView(sectionRef, { margin: "-10%", once: false });
 
-  // Force animations to run on mount (fix for real mobile devices)
+  const leftAnim = useAnimation();
+  const centerAnim = useAnimation();
+  const rightAnim = useAnimation();
+  const scooterAnim = useAnimation();
+
+  // Trigger animations manually when section enters view
   useEffect(() => {
-    leftControls.start("visible");
-    centerControls.start("visible");
-    rightControls.start("visible");
-  }, []);
+    if (inView) {
+      leftAnim.start("visible");
+      centerAnim.start("visible");
+      rightAnim.start("visible");
+      scooterAnim.start("visible");
+    } else {
+      leftAnim.start("hidden");
+      centerAnim.start("hidden");
+      rightAnim.start("hidden");
+      scooterAnim.start("hidden");
+    }
+  }, [inView]);
 
   return (
     <div
+      ref={sectionRef}
       id="events"
       className="w-full py-20 md:py-28 flex flex-col items-center relative overflow-hidden
       bg-transparent [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"
     >
-      {/* BG Title */}
+      {/* BACKGROUND TITLE */}
       <h1
         className="absolute top-20 left-1/2 -translate-x-1/2 
         text-[60px] md:text-[180px] lg:text-[240px] 
-        font-extrabold text-white/5 tracking-widest select-none pointer-events-none uppercase"
+        font-extrabold text-white/5 uppercase pointer-events-none select-none"
       >
         EVENTS
       </h1>
 
-      {/* Front Title */}
-      <div className="mb-10 md:mb-16 z-10">
+      {/* TITLE */}
+      <div className="mb-12 md:mb-20 z-10">
         <GradientText
           colors={["#40ffaa", "#4079ff", "#40ffaa"]}
           animationSpeed={3}
@@ -157,16 +175,14 @@ export default function EventSection() {
         </GradientText>
       </div>
 
-      {/* GRID — SAME 3-COLUMN FORMAT, SHRINKS ON MOBILE */}
-      <div className="grid grid-cols-3 gap-y-5 md:gap-y-20 gap-x-2 w-full max-w-5xl z-10">
+      {/* GRID */}
+      <div className="grid grid-cols-3 gap-y-5 md:gap-y-20 w-full max-w-5xl z-10">
         {/* LEFT COLUMN */}
         <motion.div
-          variants={leftColumn}
+          variants={leftVariants}
           initial="hidden"
-          animate={leftControls}
-          whileInView="visible"
-          viewport={{ amount: 0.3 }}
-          className="flex flex-col items-center gap-8 md:gap-20"
+          animate={leftAnim}
+          className="flex flex-col items-center gap-10 md:gap-20"
         >
           {events.slice(0, 3).map((ev, i) => (
             <EventCircle key={i} ev={ev} onClick={() => setSelected(ev)} />
@@ -175,22 +191,17 @@ export default function EventSection() {
 
         {/* CENTER COLUMN */}
         <motion.div
-          variants={centerColumn}
+          variants={centerVariants}
           initial="hidden"
-          animate={centerControls}
-          whileInView="visible"
-          viewport={{ amount: 0.3 }}
+          animate={centerAnim}
           className="flex flex-col items-center mt-6 md:mt-20"
         >
           <motion.img
             src="/scooter.png"
-            alt="Scooter"
             variants={scooterVariants}
             initial="hidden"
-            animate={centerControls}
-            whileInView="visible"
-            viewport={{ amount: 0.3 }}
-            className="w-28 md:w-56 mb-10 drop-shadow-[0_0_20px_rgba(255,60,60,0.6)]"
+            animate={scooterAnim}
+            className="w-28 md:w-56 mb-12 drop-shadow-[0_0_20px_rgba(255,60,60,0.6)]"
           />
 
           <EventCircle ev={events[3]} onClick={() => setSelected(events[3])} />
@@ -198,12 +209,10 @@ export default function EventSection() {
 
         {/* RIGHT COLUMN */}
         <motion.div
-          variants={rightColumn}
+          variants={rightVariants}
           initial="hidden"
-          animate={rightControls}
-          whileInView="visible"
-          viewport={{ amount: 0.3 }}
-          className="flex flex-col items-center gap-8 md:gap-20"
+          animate={rightAnim}
+          className="flex flex-col items-center gap-10 md:gap-20"
         >
           {events.slice(4).map((ev, i) => (
             <EventCircle key={i} ev={ev} onClick={() => setSelected(ev)} />
@@ -229,20 +238,17 @@ function EventCircle({ ev, onClick }) {
         whileHover={{ scale: 1.07 }}
         whileTap={{ scale: 0.95 }}
         onClick={onClick}
-        className="
-          w-24 h-24 md:w-44 md:h-44 
-          rounded-full border-4 border-red-500 cursor-pointer 
-          overflow-hidden shadow-[0_0_18px_rgba(255,80,80,0.4)]
-        "
+        className="w-24 h-24 md:w-44 md:h-44 rounded-full border-4 border-red-500
+        shadow-[0_0_18px_rgba(255,80,80,0.4)] overflow-hidden cursor-pointer"
       >
         <img
           src={ev.img}
           alt={ev.title}
-          className="w-full h-full object-cover rounded-full"
+          className="w-full h-full object-cover"
         />
       </motion.div>
 
-      <p className="text-white mt-2 md:mt-3 text-xs md:text-lg font-semibold leading-tight w-24 md:w-44">
+      <p className="text-white mt-2 md:mt-3 text-xs md:text-lg font-semibold w-28 md:w-44 leading-tight">
         {ev.title}
       </p>
     </div>
