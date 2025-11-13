@@ -16,11 +16,7 @@ function App() {
         <Sidebars />
         <div className="absolute inset-0 z-50 flex items-center justify-center text-white">
           <div className="flex z-1 items-center justify-center flex-col">
-            <img
-              src={Logo}
-              alt="Logo"
-              className="backdrop-blur-[2px] w-[400px] rounded-full"
-            />
+            <img src={Logo} alt="Logo" className=" w-[400px] rounded-full" />
           </div>
         </div>
       </div>
