@@ -14,6 +14,7 @@ const events = [
     subtitle: "Quick trades, Big gains",
     participants: "Participants: 2 make a team.",
     img: "/Finance .JPG",
+    bg: "/FinanceBG.JPG",
     guidelines: [
       "This event is open to both UG and PG students.",
       "Only ₹180 per person! Use code ECHELON25 and grab your Early Bird Offer now!",
@@ -26,6 +27,7 @@ const events = [
     subtitle: "Enrich, Engage, Empower",
     participants: "Participants: 2 make a team.",
     img: "/Hrlogo.JPG",
+    bg: "/HRBG.JPG",
     guidelines: [
       "This event is open to both UG and PG students.",
       "Only ₹180 per person! Use code ECHELON25 and grab your Early Bird Offer now!",
@@ -38,6 +40,7 @@ const events = [
     subtitle: "Where speed meets success",
     participants: "Participants: 2 make a team.",
     img: "/Marketing.PNG",
+    bg: "/MarketingBG.png",
     guidelines: [
       "This event is open to both UG and PG students.",
       "Only ₹180 per person! Use code ECHELON25 and grab your Early Bird Offer now!",
@@ -53,6 +56,7 @@ const events = [
     subtitle: "Optimize, Organise, Outstand",
     participants: "Participants: 3 make a team.",
     img: "/BMT.JPG",
+    bg: "/BMTBG.jpg",
     guidelines: [
       "This event is open to both UG and PG students.",
       "Only ₹180 per person! Use code ECHELON25 and grab your Early Bird Offer now!",
@@ -65,6 +69,7 @@ const events = [
     subtitle: "One blink, One bold decision",
     participants: "Participants: Individual event",
     img: "/BM.JPG",
+    bg: "/BMBG.JPG",
     guidelines: [
       "This event is open to both UG and PG students.",
       "Only ₹180 per person! Use code ECHELON25 and grab your Early Bird Offer now!",
@@ -77,6 +82,7 @@ const events = [
     subtitle: "Strategy in every pick",
     participants: "Participants: 2 make a team.",
     img: "/BQ.png",
+    bg: "/BQBG.jpg",
     guidelines: [
       "This event is open to both UG and PG students.",
       "Only ₹180 per person! Use code ECHELON25 and grab your Early Bird Offer now!",
@@ -89,6 +95,7 @@ const events = [
     subtitle: "Think. Pitch. Win.",
     participants: "Participants: 2 make a team.",
     img: "/Spark Tank.JPG",
+    bg: "/SparkTankBG.jpg",
     guidelines: [
       "This event is open to both UG and PG students.",
       "Only ₹180 per person! Use code ECHELON25 and grab your Early Bird Offer now!",
@@ -363,11 +370,15 @@ function EventModal({ event, onClose }) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.7, opacity: 0 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="
-          relative bg-white/10 border border-white/20 rounded-3xl 
-          p-8 max-w-xl w-full text-white shadow-2xl backdrop-blur-2xl
-        "
         onClick={(e) => e.stopPropagation()}
+        className="
+    relative rounded-3xl p-8 max-w-xl w-full text-white shadow-2xl
+    bg-cover bg-center bg-no-repeat
+    border border-white/20
+  "
+        style={{
+          backgroundImage: `url(${event.bg})`,
+        }}
       >
         {/* BACK BUTTON */}
         <button
