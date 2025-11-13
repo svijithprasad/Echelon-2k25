@@ -86,30 +86,47 @@ function App() {
             {/* EARLY BIRD OFFER – same height as button */}
             <div
               className="
-                h-[60px] md:h-[70px]
-                px-4 md:px-5 
-                py-2
-                flex flex-col justify-center
-                rounded-xl 
-                bg-[rgba(15,15,25,0.55)]
-                backdrop-blur-2xl
-                border border-white/20
-                shadow-[inset_0_0_10px_rgba(255,255,255,0.08),0_0_15px_rgba(255,255,255,0.05)]
-                animate-pulse
-                min-w-[180px] md:min-w-[200px]
-    "
+    h-[60px] md:h-[70px]
+    px-4 md:px-5 
+    py-2
+    flex flex-col justify-center
+    rounded-xl 
+    bg-gradient-to-br from-[#d4af37] via-[#b88a2c] to-[#e1c16e]
+    backdrop-blur-xl
+    border border-yellow-300/40
+    shadow-[0_0_15px_rgba(255,215,0,0.5),0_0_30px_rgba(255,200,50,0.4),inset_0_0_12px_rgba(255,255,255,0.3)]
+    relative overflow-hidden
+    min-w-[180px] md:min-w-[200px]
+  "
             >
-              <span className="text-[12px] md:text-sm font-semibold text-yellow-300">
+              {/* Shine sweep */}
+              <span
+                className="
+      absolute inset-0 
+      bg-gradient-to-r from-transparent via-white/40 to-transparent
+      translate-x-[-150%]
+      animate-[shine_2.5s_linear_infinite]
+    "
+              />
+
+              <style>
+                {`
+      @keyframes shine {
+        0% { transform: translateX(-150%); }
+        100% { transform: translateX(150%); }
+      }
+    `}
+              </style>
+
+              <span className="text-[13px] md:text-xl font-extrabold text-white drop-shadow-[0_0_5px_rgba(0,0,0,0.4)] tracking-wide">
                 🎉 Early Bird Offer!
               </span>
 
-              <span className="text-[10px] md:text-xs text-gray-200">
+              <span className="text-[11px] md:text-md text-white/90 font-medium">
                 Use code:
-                <span className="font-bold text-pink-400 ml-1">ECHELON25</span>
-              </span>
-
-              <span className="text-[10px] md:text-xs text-green-300">
-                Get 25% Off
+                <span className="font-bold text-white ml-1 drop-shadow-[0_0_4px_rgba(0,0,0,0.6)]">
+                  ECHELON25
+                </span>
               </span>
             </div>
           </div>
