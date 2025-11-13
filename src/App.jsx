@@ -108,11 +108,14 @@ const events = [
 ];
 
 function App() {
-  const [isReady, setIsReady] = useState(false);
+  // === PROGRESS STATE ===
   const [progress, setProgress] = useState(0);
+  const [isReady, setIsReady] = useState(false);
 
+  // === PRELOAD IMAGES (0% → 50%) ===
   const preloadImages = (arr) => {
     let loaded = 0;
+
     return Promise.all(
       arr.map(
         (src) =>
@@ -121,7 +124,8 @@ function App() {
             img.src = src;
             img.onload = img.onerror = () => {
               loaded++;
-              setProgress(Math.floor((loaded / arr.length) * 50)); // images = 50%
+              // Images contribute first 50%
+              setProgress(Math.floor((loaded / arr.length) * 50));
               resolve();
             };
           })
@@ -129,37 +133,60 @@ function App() {
     );
   };
 
+  // === PRELOAD VIDEO (50% → 100%) ===
   const preloadVideo = (src) => {
     return new Promise((resolve) => {
       const video = document.createElement("video");
-
       video.src = src;
       video.preload = "auto";
       video.muted = true;
       video.playsInline = true;
-      video.style.display = "none";
+      video.style.position = "absolute";
+      video.style.opacity = "0";
+      video.style.pointerEvents = "none";
 
       document.body.appendChild(video);
 
-      let triggered = false;
+      let metadataLoaded = false;
+      let dataLoaded = false;
 
-      const finish = () => {
-        if (!triggered) {
-          triggered = true;
+      const tryFinish = () => {
+        if (metadataLoaded && dataLoaded) {
           document.body.removeChild(video);
-          setProgress(100); // video = next 50%
+          // video = last 50%
+          setProgress(100);
           resolve();
         }
       };
 
-      video.addEventListener("playing", finish);
-
-      video.onloadeddata = () => {
-        video.play().catch(() => finish());
+      // metadata (duration, dimensions)
+      video.onloadedmetadata = () => {
+        metadataLoaded = true;
+        // Progress between 50–75%
+        setProgress(50 + 25);
+        tryFinish();
       };
+
+      // first frame decoded
+      video.onloadeddata = () => {
+        dataLoaded = true;
+        // Progress between 75–100%
+        setProgress(75 + 25);
+        tryFinish();
+      };
+
+      // SAFETY TIMEOUT: ensures it NEVER gets stuck
+      setTimeout(() => {
+        if (!metadataLoaded || !dataLoaded) {
+          document.body.removeChild(video);
+          setProgress(100);
+          resolve();
+        }
+      }, 4000);
     });
   };
 
+  // === MAIN LOADING EFFECT ===
   useEffect(() => {
     const load = async () => {
       const imageList = [
@@ -170,9 +197,10 @@ function App() {
         ...events.map((e) => e.bg),
       ];
 
-      await preloadImages(imageList);
-      await preloadVideo("/bg.mp4");
+      await preloadImages(imageList); // goes 0% → 50%
+      await preloadVideo("/bg.mp4"); // goes 50% → 100%
 
+      // finally show app
       setIsReady(true);
     };
 
