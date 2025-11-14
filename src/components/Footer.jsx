@@ -35,10 +35,7 @@ export default function Footer() {
 
   return (
     <>
-      <footer
-        id="contact"
-        className="w-full bg-[#0b0b15] text-white pt-25 pb-6 border-t border-white/10 relative"
-      >
+      <footer className="w-full mt-20 bg-[#0b0b15] text-white pt-12 pb-6 border-t border-white/10 relative">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* === COLLEGE DETAILS === */}
           <div>
@@ -56,7 +53,7 @@ export default function Footer() {
             <div
               className="
                 mt-5
-                w-fit
+                w-full md:w-auto
                 flex items-center justify-start gap-4
                 bg-[rgba(15,15,25,0.7)]
                 border border-[rgba(255,255,255,0.15)]
