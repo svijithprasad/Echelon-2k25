@@ -69,7 +69,7 @@ const events = [
     subtitle: "One blink, One bold decision",
     participants: "Participants: Individual event",
     img: "/BM.JPG",
-    bg: "/BMBG.JPG",
+    bg: "/BMBG.png",
     guidelines: [
       "This event is open to both UG and PG students.",
       "Only ₹180 per person! Use code ECHELON25 and grab your Early Bird Offer now!",
