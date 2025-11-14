@@ -28,7 +28,7 @@ const GlimpseSection = () => {
       {/* ===== BIG BACKGROUND TEXT ===== */}
       <h1
         className="
-          absolute top-10 left-1/2 -translate-x-1/2 
+          absolute -top-10 left-1/2 -translate-x-1/2 
           text-[110px] md:text-[240px] 
           font-extrabold uppercase tracking-widest
           text-white/10 select-none pointer-events-none

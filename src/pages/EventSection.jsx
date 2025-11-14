@@ -6,6 +6,7 @@ import {
   useInView,
 } from "framer-motion";
 import GradientText from "@/components/GradientText";
+import GoldenButton from "@/components/GoldThinButton";
 
 // EVENTS DATA
 const events = [
@@ -259,6 +260,8 @@ export default function EventSection() {
           />
 
           <EventCircle ev={events[3]} onClick={() => setSelected(events[3])} />
+
+          <GoldenButton />
         </motion.div>
 
         {/* RIGHT COLUMN */}

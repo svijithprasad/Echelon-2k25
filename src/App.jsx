@@ -10,6 +10,7 @@ import GlassTimer from "./components/GlassTimer";
 import GlassTimerVertical from "./components/GlassTimerVertical";
 import Footer from "./components/Footer";
 import RulesSection from "./pages/RulesSection";
+import Lenis from "@studio-freight/lenis";
 
 // EVENTS DATA
 const events = [
@@ -121,6 +122,25 @@ function App() {
   };
 
   useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      smooth: true,
+      smoothTouch: true,
+      wheelMultiplier: 0.9,
+      lerp: 0.08, // buttery smooth
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => lenis.destroy();
+  }, []);
+
+  useEffect(() => {
     const loadAll = async () => {
       const imageList = [
         "/thicklogo.png",
@@ -130,7 +150,7 @@ function App() {
       ];
 
       await preloadImages(imageList); // 0 → 60%
-      await preloadVideo("/video.mp4"); // 60 → 100%
+      await preloadVideo("/output.webm"); // 60 → 100%
 
       setIsReady(true);
     };

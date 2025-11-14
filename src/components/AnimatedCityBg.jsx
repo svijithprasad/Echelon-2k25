@@ -17,7 +17,7 @@ const AnimatedCityBg = () => {
     >
       <video
         ref={videoRef}
-        src="/video.mp4"
+        src="/output.webm"
         autoPlay
         loop
         muted

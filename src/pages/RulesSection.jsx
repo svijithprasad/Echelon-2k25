@@ -54,7 +54,7 @@ const RulesSection = () => {
       id="rules"
       className="
         relative w-full min-h-screen py-20 md:py-28 
-        bg-black/70 backdrop-blur-3xl border-t border-white/10
+        bg-black/80 backdrop-blur-xl border-t border-white/10
         flex flex-col items-center
       "
     >
