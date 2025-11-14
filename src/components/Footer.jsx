@@ -35,7 +35,7 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="w-full mt-20 bg-[#0b0b15] text-white pt-12 pb-6 border-t border-white/10 relative">
+      <footer className="w-full bg-[#0b0b15] text-white pt-12 pb-6 border-t border-white/10 relative">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* === COLLEGE DETAILS === */}
           <div>
@@ -49,19 +49,11 @@ export default function Footer() {
               <br />
               India
             </p>
-
-            <a
-              href="https://sdit.ac.in/"
-              target="_blank"
-              className="inline-block mt-4 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition border border-white/10"
-            >
-              Visit Website →
-            </a>
             {/* === SOCIAL BAR (Horizontal) === */}
             <div
               className="
                 mt-5
-                w-full md:w-auto
+                w-fit md:w-fit
                 flex items-center justify-start gap-4
                 bg-[rgba(15,15,25,0.7)]
                 border border-[rgba(255,255,255,0.15)]
@@ -82,12 +74,12 @@ export default function Footer() {
                 >
                   <div
                     className="
-          flex items-center justify-center
-          w-10 h-10 rounded-full
-          bg-[rgba(255,255,255,0.05)]
-          border border-[rgba(255,255,255,0.1)]
-          transition-all duration-300
-          group-hover:scale-110
+                    flex items-center justify-center
+                    w-10 h-10 rounded-full
+                    bg-[rgba(255,255,255,0.05)]
+                    border border-[rgba(255,255,255,0.1)]
+                    transition-all duration-300
+                    group-hover:scale-110
         "
                     style={{
                       boxShadow: `0 0 8px ${item.glow}`,
@@ -137,7 +129,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             {/* GOOGLE MAP */}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.0357614716733!2d74.88171597504919!3d12.9279693161815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba354cd9c8c861d%3A0xd275693596e5361a!2sShree%20Devi%20Institute%20of%20Technology%20-%20Kenjar%20Campus!5e0!3m2!1sen!2sin!4v1700000000000"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4500.404351165538!2d74.86748094586497!3d12.952185850418031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba350d45819abf1%3A0xec9cf13e2e0ad60c!2sShree%20Devi%20Institute%20Of%20Technology!5e0!3m2!1sen!2sin!4v1763091931362!5m2!1sen!2sin"
               width="100%"
               height="160"
               allowFullScreen=""

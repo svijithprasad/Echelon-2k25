@@ -200,9 +200,14 @@ function App() {
               </span>
             </div>
             <div
-              className="hidden h-[60px] md:h-[70px] px-4 md:px-5 py-2 md:flex flex-col justify-center rounded-xl
-              bg-linear-to-br from-[#d4af37] via-[#b88a2c] to-[#e1c16e] border border-yellow-300/40
-              shadow-[0_0_15px_rgba(255,215,0,0.5)] relative overflow-hidden min-w-[180px] md:min-w-[200px]"
+              className="
+                hidden md:flex
+                h-[60px] md:h-[70px] px-4 md:px-5 py-2 flex-col justify-center rounded-xl
+                bg-linear-to-br from-[#d4af37] via-[#b88a2c] to-[#e1c16e]
+                border border-yellow-300/40 shadow-[0_0_15px_rgba(255,215,0,0.5)]
+                relative overflow-hidden min-w-[180px] md:min-w-[200px]
+                md:-mt-7
+              "
             >
               <span className="text-[13px] md:text-xl font-extrabold text-white">
                 🎉 Early Bird Offer!
