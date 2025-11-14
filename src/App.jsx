@@ -208,19 +208,41 @@ function App() {
             </button>
 
             <div
-              className="h-[35px] items-center gap-2 md:h-[70px] px-4 py-2 flex md:hidden flex-row justify-center rounded-xl
-              bg-linear-to-br from-[#d4af37] via-[#b88a2c] to-[#e1c16e] border border-yellow-300/40
-              shadow-[0_0_15px_rgba(255,215,0,0.5)] relative overflow-hidden min-w-[180px] md:min-w-[200px]"
+              className="
+              h-[45px] items-center gap-2 
+               px-4 py-2 
+              flex md:hidden flex-row justify-center 
+              rounded-xl
+              bg-linear-to-br from-[#d4af37] via-[#b88a2c] to-[#e1c16e] 
+              border border-yellow-300/40
+              shadow-[0_0_15px_rgba(255,215,0,0.5)] 
+              relative overflow-hidden 
+              min-w-[180px] md:min-w-[200px]
+  "
             >
-              <span className="text-[13px] md:text-xl font-extrabold text-white">
-                🎉 Early Bird Offer!
-              </span>
-              <span className="text-[11px] md:text-md text-white/90 font-medium">
-                Use code:{" "}
-                <span className="font-bold text-white ml-1">ECHELON25</span>
-                
+              {/* MAIN CONTENT (your original) */}
+              <div className="flex flex-row items-center gap-2">
+                <span className="text-[13px] font-extrabold text-white">
+                  🎉 Early Bird Offer!
+                </span>
+
+                <span className="text-[11px] text-white/90 font-medium">
+                  Use code:{" "}
+                  <span className="font-bold text-white">ECHELON25</span>
+                </span>
+              </div>
+
+              {/* VALID TILL — centered below */}
+              <span
+                className="
+      absolute bottom-0.5 left-1/2 -translate-x-1/2 
+      text-[9px] font-semibold text-red-800
+    "
+              >
+                ⏳ valid till 30 Nov
               </span>
             </div>
+
             <div
               className="
               hidden md:flex
@@ -237,7 +259,9 @@ function App() {
               <span className="text-[11px] md:text-md text-white/90 font-medium">
                 Use code:{" "}
                 <span className="font-bold text-white ml-1">ECHELON25</span>
-                 <span className="font-light text-red-700 ml-1">[valid till 30th Dec]</span>
+                <span className="font-light text-red-700 ml-1">
+                  [valid till 30th Nov]
+                </span>
               </span>
             </div>
           </div>

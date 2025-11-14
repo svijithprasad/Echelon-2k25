@@ -77,7 +77,7 @@ export default function FeaturingSection() {
           <div className="mt-4">
             <p className="text-white/80 text-sm mb-2 flex flex-col justify-center">
               <span className="font-semibold">📅 3rd December, 2025</span>
-              <span className="font-semibold">⏰ 6:30 PM</span>
+              <span className="font-semibold">⏰ 6 : 30 PM</span>
             </p>
 
             <h3 className="text-xl font-bold text-pink-300">
@@ -117,7 +117,7 @@ export default function FeaturingSection() {
           <div className="mt-4">
             <p className="text-white/80 text-sm mb-2 flex flex-col justify-center">
               <span className="font-semibold">📅 4th December, 2025</span>
-              <span className="font-semibold">⏰ 7 PM</span>
+              <span className="font-semibold">⏰ 7 : 00 PM</span>
             </p>
 
             <h3 className="text-xl font-bold text-cyan-300">
