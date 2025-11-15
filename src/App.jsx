@@ -201,13 +201,14 @@ function App() {
               href="https://konfhub.com/echelon-2k25"
               target="_blank"
               rel="noreferrer"
+              className="cursor-pointer"
             >
               <button
                 className="group relative overflow-hidden -mt-7 px-6 md:px-8 h-[60px] md:h-[70px]
               flex items-center justify-center rounded-xl text-base md:text-xl font-extrabold
               uppercase text-white bg-linear-to-r from-red-600 via-red-500 to-red-700
               shadow-[0_0_15px_rgba(255,60,60,0.7)] border border-red-300/40 backdrop-blur-xl
-              transition-all duration-300 hover:scale-105"
+              transition-all duration-300 hover:scale-105 cursor-pointer"
               >
                 <span className="relative z-10">⚡ Register Now</span>
               </button>
