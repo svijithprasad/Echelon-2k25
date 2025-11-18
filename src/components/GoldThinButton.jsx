@@ -48,10 +48,11 @@ const GoldenButton = () => {
           ease-out
         "
       ></span>
-
-      <span className="relative flex items-center gap-5 z-10 tracking-wide">
-        Cultural Events <ArrowRightCircle />
-      </span>
+      <a href="https://shreedevisambhram.in/events" target="_blank">
+        <span className="relative flex items-center gap-5 z-10 tracking-wide">
+          Cultural Events <ArrowRightCircle />
+        </span>
+      </a>
     </button>
   );
 };
