@@ -153,8 +153,9 @@ export default function Footer() {
         </div>
 
         {/* === FOOTER BOTTOM LINE === */}
-        <div className="mt-10 text-center text-gray-400 text-sm border-t border-white/10 pt-4">
-          © 2025 Echelon | SDIT MBA Department. All Rights Reserved.
+        <div className="mt-10 pb-28 text-center text-gray-400 text-sm border-t border-white/10 pt-4">
+          <p>Developed by <a href="https://www.linkedin.com/in/s-vijith-prasad-5361032b1"><span className="font-semibold text-white underline">S Vijith Prasad</span></a> (MCA Department)</p>
+          <p>© 2025 Echelon | SDIT MBA Department. All Rights Reserved.</p>
         </div>
       </footer>
     </>
