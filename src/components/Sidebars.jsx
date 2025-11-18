@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import {
   Home,
@@ -95,6 +94,17 @@ const scrollToSection = (id) => {
   }
 };
 
+
+const downloadFile = (url) => {
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = url.split("/").pop(); // auto filename
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+};
+
+
 const Sidebars = () => {
   return (
     <>
@@ -122,13 +132,13 @@ const Sidebars = () => {
             >
               <div
                 className="
-      flex items-center justify-center
-      w-11 h-11 
-      rounded-xl
-      bg-white/5 
-      border border-white/10
-      transition-all duration-300
-    "
+                flex items-center justify-center
+                w-11 h-11
+                rounded-xl
+                bg-white/5
+                border border-white/10
+                transition-all duration-300
+              "
                 style={{
                   color: item.icon.props.color,
                   boxShadow: `0 0 10px ${item.glow}`,
@@ -144,7 +154,7 @@ const Sidebars = () => {
                 leading-2.5 text-center
                 wrap-break-word
               "
-               
+
               >
                 {item.label}
               </span>
@@ -191,16 +201,16 @@ const Sidebars = () => {
       {/* === Optimized Bottom Navigation Bar (Mobile) === */}
       <div
         className="
-    fixed bottom-4 left-1/2 -translate-x-1/2 z-[99999] md:hidden
-    w-[92%]
-    bg-[rgba(15,15,25,0.85)] backdrop-blur-xl 
-    border border-white/10
-    rounded-2xl 
-    shadow-[0_0_25px_rgba(255,0,255,0.12)]
-    px-4 py-3
-  "
+        fixed bottom-4 left-1/2 -translate-x-1/2 z-99999 md:hidden
+        w-[92%]
+        bg-[rgba(15,15,25,0.85)] backdrop-blur-xl 
+        border border-white/10
+        rounded-2xl 
+        shadow-[0_0_25px_rgba(255,0,255,0.12)]
+        px-4 py-3
+      "
       >
-        {/* Dynamic grid columns based on navItems.length */}
+
         <div
           className="grid place-items-center w-full"
           style={{
@@ -210,7 +220,11 @@ const Sidebars = () => {
           {navItems.map((item, i) => (
             <button
               key={i}
-              onClick={() => scrollToSection(item.target)}
+              onClick={() =>
+                item.link
+                  ? window.open(item.link, "_blank")
+                  : scrollToSection(item.target)
+              }
               className="
           flex flex-col items-center gap-1 
           transition-all duration-300 
